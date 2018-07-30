@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondorosaapp">
+
+    <TextView
+        android:id="@+id/tvnombrei"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivimageni"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/log600x600pxl" />
+
+        <TextView
+            android:id="@+id/tvcategoriai"
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/tvmunicipioi"
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray"
+        />
+</LinearLayout>

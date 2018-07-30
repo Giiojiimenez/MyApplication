@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondorosaapp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/ivlogo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/log600x600pxl"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/tvusuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="USUARIO"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/etusuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="usuario"
+        android:textAlignment="center"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/tvcontraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONTRASEÑA"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/etcontraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="contraseña"
+        android:textAlignment="center"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/btentrar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"
+        android:text="ENTRAR"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvregistrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGISTRATE"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+</LinearLayout>
