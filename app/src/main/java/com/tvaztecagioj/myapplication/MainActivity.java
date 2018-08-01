@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity{
                 }else if(etcontraseña.getText().toString().trim().equals("")){
                     Toast.makeText(getApplicationContext(),"Contraseña sin datos",Toast.LENGTH_LONG).show();
                 }else {
+
                     String nombre = etusuario.getText().toString().trim();
                     String contraseña = etcontraseña.getText().toString().trim();
                     iniciarSesion(nombre, contraseña);
