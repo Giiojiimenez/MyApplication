@@ -191,7 +191,19 @@
     <TextView
         android:id="@+id/correoelectronico"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:text="textView"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@color/colorAccent"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/telefonofun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="textView"
         android:textAlignment="center"
         android:textAllCaps="true"

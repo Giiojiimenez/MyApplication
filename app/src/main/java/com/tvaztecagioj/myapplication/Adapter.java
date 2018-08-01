@@ -42,11 +42,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
         holder.colonia.setText(Fundacio.getEtColonia());
         holder.codigopostal.setText(Fundacio.getEtPostal());
         holder.correoelectronico.setText(Fundacio.getEtCorreoEle());
-
-
-
-
-
+        holder.telefonofun.setText(Fundacio.getEtPhoneFun());
     }
 
     @Override
@@ -56,7 +52,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
 
     public static class FundacionviewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvnombre , tvcategoria, tvmunicipio,necesidad1,necesidad2,necesidad3,necesidad4,necesidad5,calle,colonia,codigopostal,correoelectronico;
+        TextView tvnombre , tvcategoria, tvmunicipio,necesidad1,necesidad2,necesidad3,necesidad4,necesidad5,calle,colonia,codigopostal,correoelectronico,telefonofun;
 
         public FundacionviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +69,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
             colonia=itemView.findViewById(R.id.colonia);
             codigopostal=itemView.findViewById(R.id.codigopostal);
             correoelectronico=itemView.findViewById(R.id.correoelectronico);
+            telefonofun=itemView.findViewById(R.id.telefonofun);
 
         }
     }

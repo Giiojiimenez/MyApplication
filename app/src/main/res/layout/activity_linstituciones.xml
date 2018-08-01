@@ -26,7 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@android:color/transparent"
-        android:text="AGREGAR INSTITUCION"
+        android:text="Donar"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"

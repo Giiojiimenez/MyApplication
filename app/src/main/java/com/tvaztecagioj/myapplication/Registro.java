@@ -18,7 +18,7 @@ import java.util.Map;
 public class Registro extends AppCompatActivity{
 
      EditText etnombre,etapellido,etcontraseñar,etdireccion,etedad,ettelefono;
-     Button btregistrar;
+     Button btregistrar,btromitir;
 
      private DatabaseReference mDatabase;
 
@@ -33,8 +33,17 @@ public class Registro extends AppCompatActivity{
         etedad=findViewById(R.id.etedad);
         ettelefono=findViewById(R.id.ettelefono);
         btregistrar=findViewById(R.id.btregistrar);
+        btromitir=findViewById(R.id.btromitir);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        btromitir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a=new Intent(getApplicationContext(),Linstituciones.class);
+                startActivity(a);
+            }
+        });
 
         btregistrar.setOnClickListener(new View.OnClickListener() {
             @Override
