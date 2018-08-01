@@ -58,9 +58,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="contraseña"
+        android:inputType="textPassword"
         android:textAlignment="center"
         android:textColorHint="@color/colorAccent"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -94,9 +95,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="edad"
+        android:inputType="number"
         android:textAlignment="center"
         android:textColorHint="@color/colorAccent"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -112,9 +114,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="telefono"
+        android:inputType="number"
         android:textAlignment="center"
         android:textColorHint="@color/colorAccent"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btregistrar"

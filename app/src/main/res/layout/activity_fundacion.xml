@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondorosaapp"
+    android:orientation="vertical"
+    tools:context=".Fundacion">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE DE LA FUNDACION"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNombreFun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="nombre de la fundacion"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CALLE"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etCalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="calle"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COLONIA"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etColonia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="colonia"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MUNICIPIO"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etMunicipio"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="municipio"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CODIGO POSTAL"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etPostal"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="codigo postal"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TELEFONO"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etPhoneFun"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="telefono"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CORREO ELECTRONICO"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etCorreoEle"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="correo electronico"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CATEGORIA"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etCat"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="categoria"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NECESIDAD 1"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNece01"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="necesidad 1 "
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NECESIDAD 2"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNece02"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="necesidad 2"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NECESIDAD 3"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNece03"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="necesidad 3"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NECESIDAD 4"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNece04"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="necesidad 4"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NECESIDAD 5"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/etNece05"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:hint="necesidad 5"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/btenviarFun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ENVIAR" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

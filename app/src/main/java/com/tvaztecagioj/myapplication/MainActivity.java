@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,18 +17,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
     EditText etusuario ,etcontraseña,etnombre;
     Button btentrar;
     TextView tvregistrate;
 
-    FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth mAuth;
+    FirebaseUser updateUI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
 
         etusuario=findViewById(R.id.etusuario);
         etnombre=findViewById(R.id.etnombre);
@@ -35,79 +39,90 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btentrar=findViewById(R.id.btentrar);
         tvregistrate=findViewById(R.id.tvregistrate);
 
-        tvregistrate.setOnClickListener(this);
-        btentrar.setOnClickListener(this);
-
-        mAuthListener=new FirebaseAuth.AuthStateListener() {
+        tvregistrate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user =firebaseAuth.getCurrentUser();
-                if(user!=null){
-                    Log.i("SESION","sesion iniciada con email: "+user.getEmail());
-                }else{
-                    Log.i("SESSION","session cerrada");
+            public void onClick(View view) {
+                if(etusuario.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Correo sin datos",Toast.LENGTH_LONG).show();
+                }else if(etcontraseña.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Contraseña sin datos",Toast.LENGTH_LONG).show();
+                }else {
+                    String nombrereg = etusuario.getText().toString().trim();
+                    String contraseñareg = etcontraseña.getText().toString().trim();
+                    registrar(nombrereg, contraseñareg);
                 }
             }
-        };
+        });
+        btentrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(etusuario.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Correo sin datos",Toast.LENGTH_LONG).show();
+                }else if(etcontraseña.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Contraseña sin datos",Toast.LENGTH_LONG).show();
+                }else {
+                    String nombre = etusuario.getText().toString().trim();
+                    String contraseña = etcontraseña.getText().toString().trim();
+                    iniciarSesion(nombre, contraseña);
+                }
+            }
+        });
+
     }
 
     private void iniciarSesion(String nombre,String contraseña){
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(nombre,contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.i("SESSION","SESSION INICIADA CORRECTAMENTE");
-                }else{
-                    Log.e("SESSION",task.getException().getMessage()+"");
-                }
-            }
-        });
+        mAuth.signInWithEmailAndPassword(nombre, contraseña)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                            Toast.makeText(getApplicationContext(),"Inicio Correctamente",Toast.LENGTH_LONG).show();
+                            Intent intent =new Intent(MainActivity.this,Registro.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Credenciales erroneas",Toast.LENGTH_LONG).show();
+                            updateUI(null);
+                        }
 
+                    }
+                });
     }
+
+    private void updateUI(FirebaseUser user) {
+        updateUI=user;
+    }
+
     private void registrar(String nombre,String contraseña){
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(nombre,contraseña).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.i("SESSION","USUARIO CREADO CORRECTAMENTE");
-                }else{
-                Log.e("SESSION",task.getException().getMessage()+"");
-                }
-            }
-        });
-    }
+        mAuth.createUserWithEmailAndPassword(nombre, contraseña)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(),"Usuario Creado Correctamente",Toast.LENGTH_LONG).show();
+                            etusuario.setText("");
+                            etcontraseña.setText("");
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Error al crear el Usuario",Toast.LENGTH_LONG).show();
+                        }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btentrar:
-                String nombre =etusuario.getText().toString();
-                String contraseña=etcontraseña.getText().toString();
-                iniciarSesion(nombre,contraseña);
-                Intent intent =new Intent(MainActivity.this,Registro.class);
-                startActivity(intent);
-                break;
-
-            case R.id.tvregistrate:
-
-                String nombrereg =etusuario.getText().toString();
-                String contraseñareg=etcontraseña.getText().toString();
-                registrar(nombrereg,contraseñareg);
-
-                break;
-        }
+                    }
+                });
 
     }
+
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        FirebaseAuth.getInstance().removeAuthStateListener(mAuthListener);
+        FirebaseAuth.getInstance().signOut();
     }
 }

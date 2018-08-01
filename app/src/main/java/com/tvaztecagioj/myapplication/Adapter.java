@@ -12,9 +12,9 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
 
-    List<Fundaciones> Fundacion;
+    List<FundacionFire> Fundacion;
 
-    public Adapter(List<Fundaciones> fundacion) {
+    public Adapter(List<FundacionFire> fundacion) {
         Fundacion = fundacion;
     }
 
@@ -28,10 +28,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull FundacionviewHolder holder, int position) {
-        Fundaciones Fundacio =Fundacion.get(position);
-        holder.tvnombre.setText(Fundacio.getNombreFun());
-        holder.tvcategoria.setText(Fundacio.getCategoria());
-        holder.tvmunicipio.setText(Fundacio.getMunicipio());
+        FundacionFire Fundacio =Fundacion.get(position);
+
+        holder.tvnombre.setText(Fundacio.getEtNombreFun());
+        holder.tvcategoria.setText(Fundacio.getEtCat());
+        holder.necesidad1.setText(Fundacio.getEtNece01());
+        holder.necesidad2.setText(Fundacio.getEtNece02());
+        holder.necesidad3.setText(Fundacio.getEtNece03());
+        holder.necesidad4.setText(Fundacio.getEtNece04());
+        holder.necesidad5.setText(Fundacio.getEtNece05());
+        holder.tvmunicipio.setText(Fundacio.getEtMunicipio());
+        holder.calle.setText(Fundacio.getEtCalle());
+        holder.colonia.setText(Fundacio.getEtColonia());
+        holder.codigopostal.setText(Fundacio.getEtPostal());
+        holder.correoelectronico.setText(Fundacio.getEtCorreoEle());
+
+
+
+
 
     }
 
@@ -42,8 +56,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
 
     public static class FundacionviewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvnombre , tvcategoria, tvmunicipio;
-        ImageView ivimagen;
+        TextView tvnombre , tvcategoria, tvmunicipio,necesidad1,necesidad2,necesidad3,necesidad4,necesidad5,calle,colonia,codigopostal,correoelectronico;
 
         public FundacionviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,6 +64,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.FundacionviewHolder>{
             tvnombre=itemView.findViewById(R.id.tvnombrei);
             tvcategoria=itemView.findViewById(R.id.tvcategoriai);
             tvmunicipio=itemView.findViewById(R.id.tvmunicipioi);
+            necesidad1=itemView.findViewById(R.id.necesidad1);
+            necesidad2=itemView.findViewById(R.id.necesidad2);
+            necesidad3=itemView.findViewById(R.id.necesidad3);
+            necesidad4=itemView.findViewById(R.id.necesidad4);
+            necesidad5=itemView.findViewById(R.id.necesidad5);
+            calle=itemView.findViewById(R.id.calle);
+            colonia=itemView.findViewById(R.id.colonia);
+            codigopostal=itemView.findViewById(R.id.codigopostal);
+            correoelectronico=itemView.findViewById(R.id.correoelectronico);
+
         }
     }
 }

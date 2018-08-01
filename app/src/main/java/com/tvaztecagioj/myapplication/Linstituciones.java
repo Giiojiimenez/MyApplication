@@ -1,9 +1,11 @@
 package com.tvaztecagioj.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,8 +18,9 @@ import java.util.List;
 
 public class Linstituciones extends AppCompatActivity {
     RecyclerView rv;
-    Button btinsti;
-    List<Fundaciones> Fundacion;
+    Button btinsti,btinsfunda;
+
+    List<FundacionFire> Fundacion12;
 
     Adapter adapter;
 
@@ -28,23 +31,38 @@ public class Linstituciones extends AppCompatActivity {
 
         rv=findViewById(R.id.recycler);
         btinsti=findViewById(R.id.btinstituciones);
-
+        btinsfunda=findViewById(R.id.btinsfunda);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        Fundacion=new ArrayList<>();
+        Fundacion12 =new ArrayList<>();
 
-        adapter=new Adapter(Fundacion);
+        adapter=new Adapter(Fundacion12);
         rv.setAdapter(adapter);
 
+        btinsti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a =new Intent(getApplicationContext(),Donacion.class);
+                startActivity(a);
+            }
+        });
+        btinsfunda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a =new Intent(getApplicationContext(),Fundacion.class);
+                startActivity(a);
+            }
+        });
+
         FirebaseDatabase database= FirebaseDatabase.getInstance();
-         database.getReference().getRoot().addValueEventListener(new ValueEventListener() {
+         database.getReference().child("fundaciones").addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
-                 Fundacion.removeAll(Fundacion);
+                 Fundacion12.removeAll(Fundacion12);
                 for(DataSnapshot snapshot:
                         dataSnapshot.getChildren()){
-                    Fundaciones fundaciones=snapshot.getValue(Fundaciones.class);
-                    Fundacion.add(fundaciones);
+                    FundacionFire fundaciones=snapshot.getValue(FundacionFire.class);
+                    Fundacion12.add(fundaciones);
                 }
                 adapter.notifyDataSetChanged();
              }
