@@ -1,5 +1,6 @@
 package com.tvaztecagioj.myapplication;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -59,44 +63,73 @@ public class Fundacion extends AppCompatActivity {
         btenviarFun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeNewPost();
-                if(etNombreFun.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Nombre sin datos",Toast.LENGTH_LONG).show();
-                }else if(etCalle.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Calle sin datos",Toast.LENGTH_LONG).show();
-                }else if(etColonia.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Colonia sin datos",Toast.LENGTH_LONG).show();
-                }else if(etPostal.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Codigo Postal sin datos",Toast.LENGTH_LONG).show();
-                }else if(etPhoneFun.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Telefono sin datos",Toast.LENGTH_LONG).show();
-                }else if(etCorreoEle.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Correo sin datos",Toast.LENGTH_LONG).show();
-                }else if(etCat.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Categoria sin datos",Toast.LENGTH_LONG).show();
-                }else if(etNece01.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Necesidad 01 sin datos",Toast.LENGTH_LONG).show();
-                }else if(etNece02.getText().toString().trim().equals("")){
-                    Toast.makeText(getApplicationContext(),"Campo Necesidad 02 sin datos",Toast.LENGTH_LONG).show();
-                }else {
+                MaterialStyledDialog dialog = new MaterialStyledDialog.Builder(Fundacion.this)
+                        .setTitle("¿Seguro de registrar una fundación?")
+                        .setDescription("El usuario va realizar un registro.")
+                        .setHeaderColor(R.color.yellow_sys)
+                        .setIcon(R.drawable.warning)
+                        .withIconAnimation(true)
+                        .withDialogAnimation(true)
+                        //Generar evento de boton positivo
+                        .setPositiveText("Aceptar")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
+                                if(etNombreFun.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Nombre sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etCalle.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Calle sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etColonia.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Colonia sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etPostal.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Codigo Postal sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etPhoneFun.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Telefono sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etCorreoEle.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Correo sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etCat.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Categoria sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etNece01.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Necesidad 01 sin datos",Toast.LENGTH_LONG).show();
+                                }else if(etNece02.getText().toString().trim().equals("")){
+                                    Toast.makeText(getApplicationContext(),"Campo Necesidad 02 sin datos",Toast.LENGTH_LONG).show();
+                                }else {
+                                    writeNewPost();
 
-                Toast.makeText(getApplicationContext(),"Fundacion12 Agregada Correctamente",Toast.LENGTH_LONG).show();
-                etNombreFun.setText("");
-                etCalle.setText("");
-                etColonia.setText("");
-                etMunicipio.setText("");
-                etPostal.setText("");
-                etPhoneFun.setText("");
-                etCorreoEle.setText("");
-                etCat.setText("");
-                etNece01.setText("");
-                etNece02.setText("");
-                etNece03.setText("");
-                etNece04.setText("");
-                etNece05.setText("");
-                }
+                                    Toast.makeText(getApplicationContext(),"Fundacion12 Agregada Correctamente",Toast.LENGTH_LONG).show();
+                                    etNombreFun.setText("");
+                                    etCalle.setText("");
+                                    etColonia.setText("");
+                                    etMunicipio.setText("");
+                                    etPostal.setText("");
+                                    etPhoneFun.setText("");
+                                    etCorreoEle.setText("");
+                                    etCat.setText("");
+                                    etNece01.setText("");
+                                    etNece02.setText("");
+                                    etNece03.setText("");
+                                    etNece04.setText("");
+                                    etNece05.setText("");
+                                }
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .setCancelable(false)
+                        //Boton negativo
+                        .setNegativeText("Cancelar")
+                        .onNegative(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                //Cierra el dialogo
+                                dialog.dismiss();
+                            }
+                        })
+                        .build();
+                dialog.show();
             }
+
         });
 
 

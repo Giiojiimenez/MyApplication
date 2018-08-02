@@ -14,10 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipChildren="false"
-        app:layout_constraintBottom_toTopOf="@+id/btinstituciones"
+        app:layout_constraintBottom_toTopOf="@+id/btDonaciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btDonaciones"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:background="@android:color/transparent"
+        android:text="Mis Donaciones"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btinstituciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btinstituciones"
